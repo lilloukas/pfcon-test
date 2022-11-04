@@ -5,7 +5,7 @@ from flask import Flask, request
 from flask_restful import Api
 
 from .config import DevConfig, ProdConfig
-from pfcon.resources import HealthCheck, JobList, Job, JobFile, Auth
+from pfcon.resources import HealthCheck, JobList, Job, JobFile, Auth, HelloWorld, ip_or_hello
 
 
 def create_app(config_dict=None):
@@ -32,5 +32,6 @@ def create_app(config_dict=None):
     api.add_resource(JobList, '/jobs/', endpoint='api.joblist')
     api.add_resource(Job, '/jobs/<string:job_id>/', endpoint='api.job')
     api.add_resource(JobFile, '/jobs/<string:job_id>/file/', endpoint='api.jobfile')
-
+    api.add_resource(HelloWorld, '/hello/', endpoint='api.hello')
+    api.add_resource(ip_or_hello, '/ip_or_hello/', endpoint='api.ip_or_hello')
     return app

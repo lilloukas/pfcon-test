@@ -237,3 +237,29 @@ class HealthCheck(Resource):
         return {
             'health': 'OK'
         }
+class HelloWorld(Resource):
+    """
+    Hello world resource.
+    """
+
+    def get(self):
+        ip_addr = request.remote_addr
+        return {
+            'message': 'hello world'+ip_addr
+        }
+
+class ip_or_hello(Resource):
+    """
+    IP or hello world 
+    """
+    def post(self):
+        ip_addr = request.remote_addr
+        args = parser.parse_args()
+        if args.args_path_flags == ['hello']:
+            return {
+                'hello': 'https://media.tenor.com/-JIgHIMq1u8AAAAC/cool.gif'
+            }
+        return {
+            'hello': 'Heres the ip address: ' + ip_addr
+        }
+
