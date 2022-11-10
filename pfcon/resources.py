@@ -243,9 +243,8 @@ class HelloWorld(Resource):
     """
 
     def get(self):
-        ip_addr = request.remote_addr
         return {
-            'message': 'hello world'+ip_addr
+            'message': 'https://media.tenor.com/-JIgHIMq1u8AAAAC/cool.gif'
         }
 
 class ip_or_hello(Resource):
@@ -257,9 +256,9 @@ class ip_or_hello(Resource):
         args = parser.parse_args()
         if args.args_path_flags == ['hello']:
             return {
-                'hello': 'https://media.tenor.com/-JIgHIMq1u8AAAAC/cool.gif'
+                'message': 'Hello'
             }
         return {
-            'hello': 'Heres the ip address: ' + ip_addr
+            'ip': 'Heres the ip address: ' + ip_addr
         }
 
